@@ -1,0 +1,21 @@
+{
+  "name": "owo-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/rest": "^2.6.0",
+    "axios": "^1.13.1",
+    "discord.js": "^14.24.1",
+    "dotenv": "^17.2.3",
+    "mongoose": "^8.19.2",
+    "node-cron": "^4.2.1"
+  }
+}
