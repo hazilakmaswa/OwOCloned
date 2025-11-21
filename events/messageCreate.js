@@ -31,7 +31,7 @@ module.exports = {
         }
         
         // Check for command prefix
-        const prefix = 'owo ';
+        const prefix = 'fowo ';
         if (!message.content.toLowerCase().startsWith(prefix)) return;
         
         const args = message.content.slice(prefix.length).trim().split(/ +/);

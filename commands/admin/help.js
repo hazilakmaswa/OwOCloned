@@ -13,7 +13,7 @@ module.exports = {
             .addFields(
                 {
                     name: '💰 Economy Commands',
-                    value: '`daily` - Claim daily reward\n`cowoncy` - Check balance\n`give` - Give cowoncy to someone\n`quest` - View/claim daily quest'
+                    value: '`daily` - Claim daily reward\n`fowoncy` - Check balance\n`give` - Give fowoncy to someone\n`quest` - View/claim daily quest'
                 },
                 {
                     name: '🐾 Animal Commands',

@@ -30,7 +30,7 @@ module.exports = {
         if (user.quest.completed) {
             // Claim reward
             if (args[0] === 'claim') {
-                user.cowoncy += user.quest.reward;
+                user.fowoncy += user.quest.reward;
                 const reward = user.quest.reward;
                 user.quest = {
                     type: null,
@@ -42,8 +42,8 @@ module.exports = {
                 await user.save();
                 
                 embed.setColor('#2ecc71')
-                    .setDescription(`✅ Quest completed! You received **${formatNumber(reward)}** cowoncy!`)
-                    .addFields({ name: 'Balance', value: `💵 ${formatNumber(user.cowoncy)}` });
+                    .setDescription(`✅ Quest completed! You received **${formatNumber(reward)}** fowoncy!`)
+                    .addFields({ name: 'Balance', value: `💵 ${formatNumber(user.fowoncy)}` });
                 
                 return message.reply({ embeds: [embed] });
             }
@@ -51,7 +51,7 @@ module.exports = {
             embed.setDescription(`✅ Quest completed! Use \`owo quest claim\` to claim your reward!`)
                 .addFields(
                     { name: 'Quest', value: user.quest.description || 'Unknown quest' },
-                    { name: 'Reward', value: `💰 ${formatNumber(user.quest.reward)} cowoncy` }
+                    { name: 'Reward', value: `💰 ${formatNumber(user.quest.reward)} fowoncy` }
                 );
         } else {
             const progress = Math.min(user.quest.progress, user.quest.required);
@@ -61,7 +61,7 @@ module.exports = {
             embed.setDescription(user.quest.description || 'Unknown quest')
                 .addFields(
                     { name: 'Progress', value: `${progressBar} ${progress}/${user.quest.required}` },
-                    { name: 'Reward', value: `💰 ${formatNumber(user.quest.reward)} cowoncy` }
+                    { name: 'Reward', value: `💰 ${formatNumber(user.quest.reward)} fowoncy` }
                 );
         }
         

@@ -17,5 +17,8 @@
     "dotenv": "^17.2.3",
     "mongoose": "^8.19.2",
     "node-cron": "^4.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }

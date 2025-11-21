@@ -1,0 +1,80 @@
+version: '3.8'
+
+services:
+  # MongoDB Database (Development)
+  mongodb:
+    image: mongo:7.0
+    container_name: owo-mongodb-dev
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_DATABASE: owobot
+    volumes:
+      - mongodb_dev_data:/data/db
+      - mongodb_dev_config:/data/configdb
+    ports:
+      - "27017:27017"
+    networks:
+      - owo-network-dev
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/owobot --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  # OwO Bot Application (Development with hot-reload)
+  bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    container_name: owo-bot-dev
+    restart: unless-stopped
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}
+      - MONGODB_URI=mongodb://mongodb:27017/owobot
+      - NODE_ENV=development
+    volumes:
+      # Mount source code for hot-reload
+      - ./:/app
+      # Prevent node_modules from being overwritten
+      - /app/node_modules
+    networks:
+      - owo-network-dev
+    stdin_open: true
+    tty: true
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # MongoDB Express (Optional DB Admin UI)
+  mongo-express:
+    image: mongo-express:latest
+    container_name: owo-mongo-express
+    restart: unless-stopped
+    depends_on:
+      - mongodb
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+      - ME_CONFIG_MONGODB_PORT=27017
+      - ME_CONFIG_BASICAUTH_USERNAME=admin
+      - ME_CONFIG_BASICAUTH_PASSWORD=admin123
+    ports:
+      - "8081:8081"
+    networks:
+      - owo-network-dev
+
+networks:
+  owo-network-dev:
+    driver: bridge
+
+volumes:
+  mongodb_dev_data:
+    driver: local
+  mongodb_dev_config:
+    driver: local

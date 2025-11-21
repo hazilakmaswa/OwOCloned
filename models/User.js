@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
     username: { type: String, required: true },
     
     // Economy
-    cowoncy: { type: Number, default: 100 },
+    fowoncy: { type: Number, default: 100 },
     
     // Daily rewards
     daily: {
@@ -73,7 +73,9 @@ const userSchema = new mongoose.Schema({
     social: {
         marriedTo: { type: String, default: null },
         cookies: { type: Number, default: 0 },
-        prayers: { type: Number, default: 0 }
+        prayers: { type: Number, default: 0 },
+        hugs: { type: Number, default: 0 },
+        kisses: { type: Number, default: 0 }
     },
     
     // Settings

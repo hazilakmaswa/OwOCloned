@@ -4,7 +4,7 @@ const { getAllAnimals } = require('../../utils/animals');
 
 module.exports = {
     name: 'sell',
-    aliases: ['s'],
+    aliases: ['sl'],
     description: 'Sell animals from your zoo',
     cooldown: 5,
     async execute(message, args, client) {
@@ -40,14 +40,14 @@ module.exports = {
             }
             
             user.animals = user.animals.filter(a => a.count > 0);
-            user.cowoncy += totalValue;
+            user.fowoncy += totalValue;
             await user.save();
             
             const embed = new EmbedBuilder()
                 .setColor('#f39c12')
                 .setTitle('💰 Animals Sold!')
-                .setDescription(`Sold all **${totalSold}** ${animalName} animals for **${formatNumber(totalValue)}** cowoncy!`)
-                .addFields({ name: 'Balance', value: `💵 ${formatNumber(user.cowoncy)}` })
+                .setDescription(`Sold all **${totalSold}** ${animalName} animals for **${formatNumber(totalValue)}** fowoncy!`)
+                .addFields({ name: 'Balance', value: `💵 ${formatNumber(user.fowoncy)}` })
                 .setTimestamp();
             
             return message.reply({ embeds: [embed] });
@@ -82,15 +82,15 @@ module.exports = {
             user.animals = user.animals.filter(a => a.name !== animal.name || a.rank !== animal.rank);
         }
         
-        user.cowoncy += totalValue;
+        user.fowoncy += totalValue;
         await user.save();
         
         const embed = new EmbedBuilder()
             .setColor('#f39c12')
             .setTitle('💰 Animal Sold!')
-            .setDescription(`Sold **${sellAmount}x** ${animal.emoji} **${animal.name}** for **${formatNumber(totalValue)}** cowoncy!`)
+            .setDescription(`Sold **${sellAmount}x** ${animal.emoji} **${animal.name}** for **${formatNumber(totalValue)}** fowoncy!`)
             .addFields(
-                { name: 'Balance', value: `💵 ${formatNumber(user.cowoncy)}`, inline: true },
+                { name: 'Balance', value: `💵 ${formatNumber(user.fowoncy)}`, inline: true },
                 { name: 'Remaining', value: `${animal.count || 0}`, inline: true }
             )
             .setTimestamp();

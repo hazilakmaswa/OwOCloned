@@ -1,0 +1,2 @@
+- use the direct urls , we dont want to use upload and any of those tactics
+- use emjoi urls directly

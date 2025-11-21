@@ -32,11 +32,11 @@ module.exports = {
             betAmount = parseInt(args[1]);
             
             if (betAmount > 0) {
-                if (user1.cowoncy < betAmount) {
-                    return message.reply(`❌ You don't have enough cowoncy for that bet!`);
+                if (user1.fowoncy < betAmount) {
+                    return message.reply(`❌ You don't have enough fowoncy for that bet!`);
                 }
-                if (user2.cowoncy < betAmount) {
-                    return message.reply(`❌ ${opponent.username} doesn't have enough cowoncy for that bet!`);
+                if (user2.fowoncy < betAmount) {
+                    return message.reply(`❌ ${opponent.username} doesn't have enough fowoncy for that bet!`);
                 }
             }
         }
@@ -65,8 +65,8 @@ module.exports = {
         
         // Handle bet
         if (betAmount > 0) {
-            loser.cowoncy -= betAmount;
-            winner.cowoncy += betAmount;
+            loser.fowoncy -= betAmount;
+            winner.fowoncy += betAmount;
         }
         
         // Update quest for winner
@@ -91,7 +91,7 @@ module.exports = {
             .setTimestamp();
         
         if (betAmount > 0) {
-            embed.addFields({ name: 'Prize', value: `💰 ${formatNumber(betAmount)} cowoncy` });
+            embed.addFields({ name: 'Prize', value: `💰 ${formatNumber(betAmount)} fowoncy` });
         }
         
         message.reply({ embeds: [embed] });

@@ -4,7 +4,7 @@ const { getUser, formatNumber } = require('../../utils/helpers');
 module.exports = {
     name: 'coinflip',
     aliases: ['cf', 'flip'],
-    description: 'Flip a coin to win cowoncy!',
+    description: 'Flip a coin to win fowoncy!',
     cooldown: 5,
     async execute(message, args, client) {
         const user = await getUser(message.author.id, message.author.username);
@@ -15,7 +15,7 @@ module.exports = {
         
         let betAmount;
         if (args[0].toLowerCase() === 'all') {
-            betAmount = user.cowoncy;
+            betAmount = user.fowoncy;
         } else {
             betAmount = parseInt(args[0]);
         }
@@ -24,8 +24,8 @@ module.exports = {
             return message.reply('❌ Invalid bet amount!');
         }
         
-        if (betAmount > user.cowoncy) {
-            return message.reply(`❌ You don't have enough cowoncy! You have **${formatNumber(user.cowoncy)}** cowoncy.`);
+        if (betAmount > user.fowoncy) {
+            return message.reply(`❌ You don't have enough fowoncy! You have **${formatNumber(user.fowoncy)}** fowoncy.`);
         }
         
         if (!args[1]) {
@@ -48,12 +48,12 @@ module.exports = {
         const won = result === playerChoice;
         
         // Update user
-        user.cowoncy -= betAmount;
+        user.fowoncy -= betAmount;
         let profit = -betAmount;
         
         if (won) {
             const winAmount = betAmount * 2;
-            user.cowoncy += winAmount;
+            user.fowoncy += winAmount;
             profit = betAmount;
         }
         
@@ -80,7 +80,7 @@ module.exports = {
             .addFields(
                 { name: 'Bet', value: `💵 ${formatNumber(betAmount)}`, inline: true },
                 { name: 'Result', value: profit > 0 ? `+${formatNumber(profit)}` : `${formatNumber(profit)}`, inline: true },
-                { name: 'Balance', value: `💰 ${formatNumber(user.cowoncy)}`, inline: true }
+                { name: 'Balance', value: `💰 ${formatNumber(user.fowoncy)}`, inline: true }
             )
             .setTimestamp();
         

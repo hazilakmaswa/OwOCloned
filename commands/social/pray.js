@@ -25,18 +25,18 @@ module.exports = {
         const user = await getUser(message.author.id, message.author.username);
         const targetUser = await getUser(target.id, target.username);
         
-        // Random reward (50-200 cowoncy)
+        // Random reward (50-200 fowoncy)
         const reward = Math.floor(Math.random() * 151) + 50;
         
-        targetUser.cowoncy += reward;
+        targetUser.fowoncy += reward;
         targetUser.social.prayers += 1;
         
         await targetUser.save();
         
         const messages = [
-            `🙏 ${message.author} prayed for ${target}! They received **${formatNumber(reward)}** cowoncy!`,
-            `✨ ${message.author}'s prayer blessed ${target} with **${formatNumber(reward)}** cowoncy!`,
-            `🌟 The heavens smile upon ${target}! ${message.author}'s prayer granted them **${formatNumber(reward)}** cowoncy!`
+            `🙏 ${message.author} prayed for ${target}! They received **${formatNumber(reward)}** fowoncy!`,
+            `✨ ${message.author}'s prayer blessed ${target} with **${formatNumber(reward)}** fowoncy!`,
+            `🌟 The heavens smile upon ${target}! ${message.author}'s prayer granted them **${formatNumber(reward)}** fowoncy!`
         ];
         
         const randomMessage = messages[Math.floor(Math.random() * messages.length)];

@@ -102,8 +102,8 @@ function generateQuest() {
     const quests = [
         { type: 'hunt', required: 10, reward: 500, description: 'Hunt 10 animals' },
         { type: 'battle', required: 5, reward: 1000, description: 'Win 5 battles' },
-        { type: 'gamble', required: 1000, reward: 800, description: 'Gamble 1000 cowoncy' },
-        { type: 'send', required: 500, reward: 600, description: 'Send 500 cowoncy to someone' }
+        { type: 'gamble', required: 1000, reward: 800, description: 'Gamble 1000 fowoncy' },
+        { type: 'send', required: 500, reward: 600, description: 'Send 500 fowoncy to someone' }
     ];
     
     return quests[Math.floor(Math.random() * quests.length)];

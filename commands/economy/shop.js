@@ -38,10 +38,10 @@ module.exports = {
         
         // Show shop if no item specified
         if (!args[0]) {
-            let description = `**Your Balance:** 💰 ${formatNumber(user.cowoncy)} cowoncy\n\n`;
+            let description = `**Your Balance:** 💰 ${formatNumber(user.fowoncy)} fowoncy\n\n`;
             
             for (const [key, item] of Object.entries(shopItems)) {
-                description += `${item.emoji} **${item.name}** - ${formatNumber(item.price)} cowoncy\n${item.description}\n\n`;
+                description += `${item.emoji} **${item.name}** - ${formatNumber(item.price)} fowoncy\n${item.description}\n\n`;
             }
             
             const embed = new EmbedBuilder()
@@ -62,8 +62,8 @@ module.exports = {
             return message.reply('❌ Item not found! Use `owo shop` to see available items.');
         }
         
-        if (user.cowoncy < item.price) {
-            return message.reply(`❌ You don't have enough cowoncy! You need ${formatNumber(item.price)} but only have ${formatNumber(user.cowoncy)}.`);
+        if (user.fowoncy < item.price) {
+            return message.reply(`❌ You don't have enough fowoncy! You need ${formatNumber(item.price)} but only have ${formatNumber(user.fowoncy)}.`);
         }
         
         // Handle specific items
@@ -80,14 +80,14 @@ module.exports = {
             user.inventory.gems += 1;
         }
         
-        user.cowoncy -= item.price;
+        user.fowoncy -= item.price;
         await user.save();
         
         const embed = new EmbedBuilder()
             .setColor('#2ecc71')
             .setTitle('✅ Purchase Successful!')
-            .setDescription(`You bought ${item.emoji} **${item.name}** for ${formatNumber(item.price)} cowoncy!`)
-            .addFields({ name: 'Balance', value: `💰 ${formatNumber(user.cowoncy)}` })
+            .setDescription(`You bought ${item.emoji} **${item.name}** for ${formatNumber(item.price)} fowoncy!`)
+            .addFields({ name: 'Balance', value: `💰 ${formatNumber(user.fowoncy)}` })
             .setTimestamp();
         
         message.reply({ embeds: [embed] });

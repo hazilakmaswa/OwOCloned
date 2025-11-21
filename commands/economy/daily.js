@@ -4,7 +4,7 @@ const { getUser, formatNumber } = require('../../utils/helpers');
 module.exports = {
     name: 'daily',
     aliases: ['d'],
-    description: 'Claim your daily cowoncy reward!',
+    description: 'Claim your daily fowoncy reward!',
     cooldown: 5,
     async execute(message, args, client) {
         const user = await getUser(message.author.id, message.author.username);
@@ -23,7 +23,7 @@ module.exports = {
         const totalReward = baseReward + Math.min(streakBonus, 1000); // Max 1000 bonus
         
         // Update user
-        user.cowoncy += totalReward;
+        user.fowoncy += totalReward;
         user.daily.claimed = true;
         user.daily.streak += 1;
         user.daily.lastClaimed = new Date();
@@ -33,10 +33,10 @@ module.exports = {
         const embed = new EmbedBuilder()
             .setColor('#2ecc71')
             .setTitle('💰 Daily Reward Claimed!')
-            .setDescription(`You received **${formatNumber(totalReward)}** cowoncy!`)
+            .setDescription(`You received **${formatNumber(totalReward)}** fowoncy!`)
             .addFields(
                 { name: 'Streak', value: `🔥 ${user.daily.streak} days`, inline: true },
-                { name: 'Balance', value: `💵 ${formatNumber(user.cowoncy)} cowoncy`, inline: true }
+                { name: 'Balance', value: `💵 ${formatNumber(user.fowoncy)} fowoncy`, inline: true }
             )
             .setTimestamp();
         
