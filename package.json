@@ -1,14 +1,18 @@
 {
   "name": "owo-bot",
   "version": "1.0.0",
-  "description": "",
+  "description": "Discord bot for OwO game clone",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
-  "keywords": [],
-  "author": "",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": ["discord", "bot", "owo"],
+  "author": "Your Name",
   "license": "ISC",
   "dependencies": {
     "@discordjs/rest": "^2.6.0",
