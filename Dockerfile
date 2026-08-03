@@ -30,8 +30,4 @@ COPY --chown=nodejs:nodejs . .
 # Pindah ke user non-root
 USER nodejs
 
-# Health check (perbaiki agar tidak selalu exit 1)
-HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
-    CMD node -e "console.log('healthy')" || exit 0
-
 CMD ["npm", "start"]
